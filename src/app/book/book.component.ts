@@ -17,9 +17,11 @@ export class BookComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
-    let httpOptions = {
-      headers: new HttpHeaders({ 'Authorization': localStorage.getItem('jwtToken') })
-    };
+    const token = localStorage.getItem('jwtToken');
+    let httpOptions = {};
+    if (token != null) {
+      httpOptions = { headers : new HttpHeaders({ 'Authorization': token })};
+    }
     this.http.get('/api/book', httpOptions).subscribe(data => {
       this.books = data;
       console.log(this.books);

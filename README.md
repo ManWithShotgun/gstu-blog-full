@@ -9,3 +9,13 @@ To run locally:
 * Run `npm install`
 * Run `npm install --save-dev @angular-devkit/core`
 * Run `npm start`
+
+Linux:
+Start mongoDB:
+`sudo service mongod start`
+
+
+Fixes:
+
+[source](https://stackoverflow.com/questions/53310332/angular-typeerror-cannot-read-property-length-of-null-when-subscribe)
+When HttpClient get request response `null`. It's because header is null.
