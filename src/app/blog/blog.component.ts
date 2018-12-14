@@ -6,13 +6,13 @@ import { tap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of';
 
 @Component({
-  selector: 'app-book',
-  templateUrl: './book.component.html',
-  styleUrls: ['./book.component.css']
+  selector: 'app-blog',
+  templateUrl: './blog.component.html',
+  styleUrls: ['./blog.component.css']
 })
-export class BookComponent implements OnInit {
+export class BlogComponent implements OnInit {
 
-  books: any;
+  blogs: any;
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -22,9 +22,9 @@ export class BookComponent implements OnInit {
     if (token != null) {
       httpOptions = { headers : new HttpHeaders({ 'Authorization': token })};
     }
-    this.http.get('/api/book', httpOptions).subscribe(data => {
-      this.books = data;
-      console.log(this.books);
+    this.http.get('/api/blog', httpOptions).subscribe(data => {
+      this.blogs = data;
+      console.log(this.blogs);
     }, err => {
       if(err.status === 401) {
         this.router.navigate(['login']);

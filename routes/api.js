@@ -6,7 +6,7 @@ var express = require('express');
 var jwt = require('jsonwebtoken');
 var router = express.Router();
 var User = require("../models/User");
-var Book = require("../models/Book");
+var Blog = require("../models/Blog");
 
 router.post('/signup', function(req, res) {
   if (!req.body.username || !req.body.password) {
@@ -50,34 +50,34 @@ router.post('/signin', function(req, res) {
   });
 });
 
-router.post('/book', passport.authenticate('jwt', { session: false}), function(req, res) {
+router.post('/blog', passport.authenticate('jwt', { session: false}), function(req, res) {
   var token = getToken(req.headers);
   if (token) {
     console.log(req.body);
-    var newBook = new Book({
+    var newBlog = new Blog({
       isbn: req.body.isbn,
       title: req.body.title,
       author: req.body.author,
       publisher: req.body.publisher
     });
 
-    newBook.save(function(err) {
+    newBlog.save(function(err) {
       if (err) {
-        return res.json({success: false, msg: 'Save book failed.'});
+        return res.json({success: false, msg: 'Save blog failed.'});
       }
-      res.json({success: true, msg: 'Successful created new book.'});
+      res.json({success: true, msg: 'Successful created new blog.'});
     });
   } else {
     return res.status(403).send({success: false, msg: 'Unauthorized.'});
   }
 });
 
-router.get('/book', passport.authenticate('jwt', { session: false}), function(req, res) {
+router.get('/blog', passport.authenticate('jwt', { session: false}), function(req, res) {
   var token = getToken(req.headers);
   if (token) {
-    Book.find(function (err, books) {
+    Blog.find(function (err, blogs) {
       if (err) return next(err);
-      res.json(books);
+      res.json(blogs);
     });
   } else {
     return res.status(403).send({success: false, msg: 'Unauthorized.'});

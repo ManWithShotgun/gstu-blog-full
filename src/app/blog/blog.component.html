@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>Blog List <button class="btn btn-success" (click)="logout()">Logout</button></h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ISBN</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Publisher</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let blog of blogs">
+        <td>{{ blog.isbn }}</td>
+        <td>{{ blog.title }}</td>
+        <td>{{ blog.author }}</td>
+        <td>{{ blog.publisher }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

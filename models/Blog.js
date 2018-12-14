@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var BookSchema = new Schema({
+var BlogSchema = new Schema({
   isbn: {
     type: String,
     required: true
@@ -20,4 +20,4 @@ var BookSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model('Book', BookSchema);
+module.exports = mongoose.model('Blog', BlogSchema);
