@@ -14,6 +14,18 @@ Linux:
 Start mongoDB:
 `sudo service mongod start`
 
+Windows:
+
+[source](https://codedzen.ru/node-js-oshibka-ustanovki-paketa-msbuild-error-msb3428/)
+Run as Admin:
+```shell
+npm install --global --production windows-build-tools
+```
+
+Run MongoDB:
+```shell 
+"C:\Program Files\MongoDB\Server\4.0\bin\mongod.exe" --dbpath="c:\data\db"
+```
 
 Fixes:
 
