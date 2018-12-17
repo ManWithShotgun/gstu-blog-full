@@ -47,10 +47,10 @@ export class BlogComponent implements OnInit {
   addCoin(name, price) {
     console.log(name + ' : ' + price);
     const data = {
-      isbn: '777',
-      title: '777',
-      author: '777',
-      publisher: '777'
+      isbn: name,
+      title: name,
+      author: name,
+      publisher: price
     };
 
     const token = localStorage.getItem('jwtToken');
@@ -60,6 +60,7 @@ export class BlogComponent implements OnInit {
     }
     this.http.post('/api/blog', data, httpOptions).subscribe(resp => {
       console.log(resp);
+      this.blogs.push(data);
     }, err => {
       console.log(err);
     });
