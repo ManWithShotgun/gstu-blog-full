@@ -40,17 +40,15 @@ export class BlogComponent implements OnInit {
   createForm() {
     this.angForm = this.fb.group({
       name: ['', Validators.required ],
-      price: ['', Validators.required ]
+      content: ['', Validators.required ]
     });
   }
 
-  addCoin(name, price) {
-    console.log(name + ' : ' + price);
+  addCoin(name, content) {
+    console.log(name + ' : ' + content);
     const data = {
-      isbn: name,
       title: name,
-      author: name,
-      publisher: price
+      content: content
     };
 
     const token = localStorage.getItem('jwtToken');

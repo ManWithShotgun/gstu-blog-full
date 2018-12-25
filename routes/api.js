@@ -55,10 +55,8 @@ router.post('/blog', passport.authenticate('jwt', { session: false}), function(r
   if (token) {
     console.log(req.body);
     var newBlog = new Blog({
-      isbn: req.body.isbn,
       title: req.body.title,
-      author: req.body.author,
-      publisher: req.body.publisher
+      content: req.body.content
     });
 
     newBlog.save(function(err) {
