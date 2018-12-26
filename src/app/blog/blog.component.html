@@ -18,8 +18,7 @@
         </div>
         <div class="form-group">
           <label class="col-md-4">Content</label>
-          <!--<textarea class="form-control" formControlName="content" #content />-->
-          <input type="text" class="form-control" formControlName="content" #content/>
+          <textarea class="form-control" formControlName="content" #content></textarea>
         </div>
         <div *ngIf="angForm.controls['content'].invalid && (angForm.controls['content'].dirty || angForm.controls['content'].touched)" class="alert alert-danger">
           <div *ngIf="angForm.controls['content'].errors.required">
@@ -27,7 +26,7 @@
           </div>
         </div>
         <div class="form-group">
-          <button (click)="addCoin(name.value, content.value)" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">Add</button>
+          <button (click)="addTopic(name.value, content.value)" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">Add</button>
         </div>
       </form>
     </div>

@@ -44,7 +44,7 @@ export class BlogComponent implements OnInit {
     });
   }
 
-  addCoin(name, content) {
+  addTopic(name, content) {
     console.log(name + ' : ' + content);
     const data = {
       title: name,
