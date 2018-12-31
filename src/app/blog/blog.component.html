@@ -1,5 +1,7 @@
 <div class="container">
-  <h1>Blog List <button class="btn btn-success" (click)="logout()">Logout</button></h1>
+  <h1>Blog List
+    <button class="btn btn-success" (click)="logout()">Logout</button>
+  </h1>
 
   <div class="panel panel-primary">
     <div class="panel-heading">
@@ -9,9 +11,11 @@
       <form [formGroup]="angForm" novalidate>
         <div class="form-group">
           <label class="col-md-4">Name</label>
-          <input type="text" class="form-control" formControlName="name" #name />
+          <input type="text" class="form-control" formControlName="name" #name/>
         </div>
-        <div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
+        <div
+          *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)"
+          class="alert alert-danger">
           <div *ngIf="angForm.controls['name'].errors.required">
             Name is required.
           </div>
@@ -20,30 +24,40 @@
           <label class="col-md-4">Content</label>
           <textarea class="form-control" formControlName="content" #content></textarea>
         </div>
-        <div *ngIf="angForm.controls['content'].invalid && (angForm.controls['content'].dirty || angForm.controls['content'].touched)" class="alert alert-danger">
+        <div
+          *ngIf="angForm.controls['content'].invalid && (angForm.controls['content'].dirty || angForm.controls['content'].touched)"
+          class="alert alert-danger">
           <div *ngIf="angForm.controls['content'].errors.required">
             Content is required.
           </div>
         </div>
         <div class="form-group">
-          <button (click)="addTopic(name.value, content.value)" [disabled]="angForm.pristine || angForm.invalid" class="btn btn-primary">Add</button>
+          <button (click)="addTopic(name.value, content.value)" [disabled]="angForm.pristine || angForm.invalid"
+                  class="btn btn-primary">Add
+          </button>
         </div>
       </form>
     </div>
   </div>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Content</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let blog of blogs">
-        <td>{{ blog.title }}</td>
-        <td>{{ blog.content }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div *ngFor="let blog of blogs" class="panel">
+    <div class="panel-heading">
+      <div class="text-center">
+        <div class="row">
+          <div class="col-sm-9">
+            <h3 class="pull-left">{{ blog.title }}</h3>
+          </div>
+          <div class="col-sm-3">
+            <h4 class="pull-right">
+              <small><em>2014-07-30<br>18:30:00</em></small>
+            </h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-body">
+      {{ blog.content }}
+    </div>
+  </div>
 </div>
